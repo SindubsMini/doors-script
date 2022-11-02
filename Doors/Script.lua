@@ -2,6 +2,293 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "Doors Script", HidePremium = false, SaveConfig = true, ConfigFolder = "Doors Summon"})
 
 
+local everyTab = Window:MakeTab({
+    Name = "Summon Entity Every Door",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+everyTab:AddParagraph("Warning!","High performance required!")
+
+everyTab:AddButton({
+    Name = "Screech Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech)(Data)
+        end)
+        
+    end
+})
+
+
+everyTab:AddButton({
+    Name = "Halt Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        require(game.ReplicatedStorage.ClientModules.EntityModules.Glitch).stuff(Data, workspace.CurrentRooms[tostring(game.ReplicatedStorage.GameData.LatestRoom.Value)])
+        end)
+    end    
+})
+
+
+everyTab:AddButton({
+    Name = "Break Lights Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "breakLights", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 0.416, 60) 
+        end)
+    end    
+})
+
+everyTab:AddButton({
+    Name = "Flicker Lights Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1) 
+        end)
+    end    
+})
+
+
+everyTab:AddButton({
+    Name = "Seek Eyes Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        require(game:GetService("ReplicatedStorage").ClientModules.EntityModules.Seek).tease(nil, workspace.CurrentRooms:WaitForChild(game.ReplicatedStorage.GameData.LatestRoom.Value), 14, 1665596753, true)
+        end)
+    end    
+})
+
+everyTab:AddButton({
+    Name = "Heartbeat Minigame Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        firesignal(game.ReplicatedStorage.Bricks.ClutchHeartbeat.OnClientEvent) 
+        end)
+    end    
+})
+
+everyTab:AddButton({
+    Name = "Red Room Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local v1 = require(game.ReplicatedStorage.ClientModules.Module_Events)
+        local room = workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")]
+        local seconds = 1000000
+        v1.tryp(workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")], seconds)
+        end)
+    end
+})
+
+everyTab:AddButton({
+    Name = "A-60 Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+        -- Create entity
+        local entity = Creator.createEntity({
+            CustomName = "A-60", -- Custom name of your entity
+            Model = "https://github.com/fnaclol/sussy-bois/blob/main/A-60V2.rbxm", -- Can be GitHub file or rbxassetid
+            Speed = 200, -- Percentage, 100 = default Rush speed
+            DelayTime = 3, -- Time before starting cycles (seconds)
+            HeightOffset = 0,
+            CanKill = false,
+            KillRange = 50,
+            BreakLights = true,
+            BackwardsMovement = false,
+            FlickerLights = {
+                true, -- Enabled/Disabled
+                2, -- Time (seconds)
+            },
+            Cycles = {
+                Min = 1,
+                Max = 2,
+                WaitTime = 0.05,
+            },
+            CamShake = {
+                true, -- Enabled/Disabled
+                {30, 30, 0.1, 1}, -- Shake values (don't change if you don't know)
+                50, -- Shake start distance (from Entity to you)
+            },
+            Jumpscare = {
+                false, -- Enabled/Disabled
+                {
+                    Image1 = "rbxassetid://11394048190", -- Image1 url
+                    Image2 = "rbxassetid://11394048190", -- Image2 url
+                    Shake = true,
+                    Sound1 = {
+                        10483790459, -- SoundId
+                        { Volume = 0.5 }, -- Sound properties
+                    },
+                    Sound2 = {
+                        10483837590, -- SoundId
+                        { Volume = 0.5 }, -- Sound properties
+                    },
+                    Flashing = {
+                        true, -- Enabled/Disabled
+                        Color3.fromRGB(255, 0, 0), -- Color
+                    },
+                    Tease = {
+                        false, -- Enabled/Disabled
+                        Min = 1,
+                        Max = 1,
+                    },
+                },
+            },
+            CustomDialog = {"You died to A-60", "It can Apear at any moment, a loud scream will anounce its presence", "When you hear it spawn you must stay out of its reach as soon as possible", "It knows exactly where you are so hiding in different places will not work.."}, -- Custom death message
+        })
+        
+        -----[[ Advanced ]]-----
+        entity.Debug.OnEntitySpawned = function(entityTable)
+            print("Entity has spawned:", entityTable.Model)
+        end
+        
+        entity.Debug.OnEntityDespawned = function(entityTable)
+            print("Entity has despawned:", entityTable.Model)
+        end
+        
+        entity.Debug.OnEntityStartMoving = function(entityTable)
+            print("Entity has started moving:", entityTable.Model)
+        end
+        
+        entity.Debug.OnEntityFinishedRebound = function(entityTable)
+            print("Entity has finished rebound:", entityTable.Model)
+        end
+        
+        entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
+            print("Entity:", entityTable.Model, "has entered room:", room)
+        end
+        
+        entity.Debug.OnLookAtEntity = function(entityTable)
+            print("Player has looked at entity:", entityTable.Model)
+        end
+        
+        entity.Debug.OnDeath = function(entityTable)
+            warn("Player has died.")
+        end
+        ------------------------
+        
+        -- Run the created entity
+        Creator.runEntity(entity)
+        end)
+    end
+})
+
+everyTab:AddButton({
+    Name = "Rebound Every Door",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+        -- Create entity
+        local entity = Creator.createEntity({
+            CustomName = "Rebound", -- Custom name of your entity
+            Model = "rbxassetid://11401769490", -- Can be GitHub file or rbxassetid
+            Speed = 150, -- Percentage, 100 = default Rush speed
+            DelayTime = 3, -- Time before starting cycles (seconds)
+            HeightOffset = 0,
+            CanKill = false,
+            KillRange = 50,
+            BreakLights = false,
+            BackwardsMovement = false,
+            FlickerLights = {
+                true, -- Enabled/Disabled
+                2.5, -- Time (seconds)
+            },
+            Cycles = {
+                Min = 1,
+                Max = 6,
+                WaitTime = 7,
+            },
+            CamShake = {
+                true, -- Enabled/Disabled
+                {5, 15, 0.1, 1}, -- Shake values (don't change if you don't know)
+                100, -- Shake start distance (from Entity to you)
+            },
+            Jumpscare = {
+                false, -- Enabled/Disabled
+                {
+                    Image1 = "rbxassetid://11372489796", -- Image1 url
+                    Image2 = "rbxassetid://11372489796", -- Image2 url
+                    Shake = true,
+                    Sound1 = {
+                        10483790459, -- SoundId
+                        { Volume = 0.5 }, -- Sound properties
+                    },
+                    Sound2 = {
+                        10483837590, -- SoundId
+                        { Volume = 0.5 }, -- Sound properties
+                    },
+                    Flashing = {
+                        true, -- Enabled/Disabled
+                        Color3.fromRGB(255, 0, 0), -- Color
+                    },
+                    Tease = {
+                        true, -- Enabled/Disabled
+                        Min = 1,
+                        Max = 3,
+                    },
+                },
+            },
+            CustomDialog = {"You died to Rebound...", "The lights flicker upon its scream.", "It is also tricky, as it rebounds.", "You need to hide to around 6 times."}, -- Custom death message
+        })
+        
+        -----[[ Advanced ]]-----
+        entity.Debug.OnEntitySpawned = function(entityTable)
+            print("Entity has spawned:", entityTable.Model)
+        end
+        
+        entity.Debug.OnEntityDespawned = function(entityTable)
+            print("Entity has despawned:", entityTable.Model)
+        end
+        
+        entity.Debug.OnEntityStartMoving = function(entityTable)
+            print("Entity has started moving:", entityTable.Model)
+        end
+        
+        entity.Debug.OnEntityFinishedRebound = function(entityTable)
+            print("Entity has finished rebound:", entityTable.Model)
+        end
+        
+        entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
+            print("Entity:", entityTable.Model, "has entered room:", room)
+        end
+        
+        entity.Debug.OnLookAtEntity = function(entityTable)
+            print("Player has looked at entity:", entityTable.Model)
+        end
+        
+        entity.Debug.OnDeath = function(entityTable)
+            warn("Player has died.")
+        end
+        ------------------------
+        
+        -- Run the created entity
+        Creator.runEntity(entity)
+        
+        end)
+    end
+})
+
 local Tab = Window:MakeTab({
     Name = "Summon Entity",
     Icon = "rbxassetid://4483345998",
@@ -93,6 +380,12 @@ end)
     end
 })
 
+Tab:AddButton({
+    Name = "Heartbeat Minigame",
+    Callback = function ()
+        firesignal(game.ReplicatedStorage.Bricks.ClutchHeartbeat.OnClientEvent) 
+    end
+})
 
 Tab:AddButton({
     Name = "Spawn Halt",
@@ -883,7 +1176,7 @@ old = hookmetamethod(game,"__namecall",newcclosure(function(self,...)
     end
     if tostring(self) == 'ClutchHeartbeat' and method == "FireServer" and OrionLib.Flags["HeartbeatWin"].Value == true then
         args[2] = true
-        return old(self,unpack(args))infiniteyield
+        return old(self,unpack(args)).infiniteyield
     end
     
     return old(self,...)
