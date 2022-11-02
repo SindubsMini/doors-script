@@ -45,6 +45,54 @@ Tab:AddButton({
     end
 })
 
+Tab:AddButton({
+    Name = "Spawn Eyes on 'E' key",
+    Callback = function ()
+        local Plr = game.Players.LocalPlayer
+ 
+Plr:GetMouse().KeyDown:Connect(function(K)
+    if K == "e" then 
+local enableDamage = false
+
+local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+local eyes=game:GetObjects("rbxassetid://11388969546")[1]
+
+if eyes then end
+game.Workspace.CurrentRooms.ChildAdded:Connect(function()
+    game.Workspace:FindFirstChild("Eyes"):Destroy()
+    enableDamage = false -- or true
+end)
+local num=math.floor(#currentLoadedRoom.Nodes:GetChildren()/2)
+eyes.CFrame=(
+	num==0 and currentLoadedRoom.Base or currentLoadedRoom.Nodes[num]
+).CFrame+Vector3.new(0,7,0)
+
+eyes.Parent=workspace
+eyes.Ambience:Play()
+task.wait(.5)
+eyes.Attachment.Eyes.Enabled=true
+
+local hum=game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+while true and enableDamage do
+	local _,found=workspace.CurrentCamera:WorldToScreenPoint(eyes.Position)
+	if found then
+		hum.Health-=10
+		eyes.Attack:Play()
+		if hum.Health<=0 then
+			game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Eyes"
+			debug.setupvalue(getconnections(game:GetService("ReplicatedStorage").Bricks.DeathHint.OnClientEvent)[1].Function, 1, {
+				"You died to the Eyes...", "They don't like to be stared at."
+			})
+		end
+	end
+	task.wait(.1)
+end
+end
+end)
+
+    end
+})
+
 
 Tab:AddButton({
     Name = "Spawn Halt",
@@ -100,7 +148,7 @@ Tab:AddButton({
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "A-60", -- Custom name of your entity
-    Model = "rbxassetid://11379072534", -- Can be GitHub file or rbxassetid
+    Model = "https://github.com/fnaclol/sussy-bois/blob/main/A-60V2.rbxm", -- Can be GitHub file or rbxassetid
     Speed = 200, -- Percentage, 100 = default Rush speed
     DelayTime = 3, -- Time before starting cycles (seconds)
     HeightOffset = 0,
@@ -536,6 +584,18 @@ local VisualsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+VisualsTab:AddButton({
+    Name = "Get All Achievements",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        for i,v in pairs(require(game.ReplicatedStorage.Achievements)) do
+            spawn(function()
+                require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.AchievementUnlock)(nil, i)
+            end)
+        end
+    end
+})
+
 local CF = CFrame.new
 local LatestRoom = game:GetService("ReplicatedStorage").GameData.LatestRoom
 local ChaseStart = game:GetService("ReplicatedStorage").GameData.ChaseStart
@@ -823,7 +883,7 @@ old = hookmetamethod(game,"__namecall",newcclosure(function(self,...)
     end
     if tostring(self) == 'ClutchHeartbeat' and method == "FireServer" and OrionLib.Flags["HeartbeatWin"].Value == true then
         args[2] = true
-        return old(self,unpack(args))
+        return old(self,unpack(args))infiniteyield
     end
     
     return old(self,...)
@@ -921,7 +981,7 @@ AdditionallyTab:AddParagraph("Warning!","these scripts are not mine!")
 AdditionallyTab:AddButton({
     Name = "Infinite Yield",
     Callback = function ()
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source')))()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY//master/source')))()
         
     end
 })
@@ -939,6 +999,6 @@ local CreditsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-CreditsTab:AddParagraph("Credits to","SindubsMini","My GitHub: SindubsMini - my discord: netzklap#7566","script is still in alpha version...")
+CreditsTab:AddParagraph("Credits to","SindubsMini, fnaclol to models entites.","My GitHub: SindubsMini - my discord: netzklap#7566","script is still in alpha version...")
 
 OrionLib:Init()
