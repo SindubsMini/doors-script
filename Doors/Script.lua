@@ -305,7 +305,7 @@ everyTab:AddButton({
         -- Create entity
         local entity = Creator.createEntity({
             CustomName = "A-60", -- Custom name of your entity
-            Model = "https://github.com/fnaclol/sussy-bois/blob/main/A-60V2.rbxm", -- Can be GitHub file or rbxassetid
+            Model = "https://github.com/sponguss/storage/blob/main/a-60.rbxm?raw=true", -- Can be GitHub file or rbxassetid
             Speed = 200, -- Percentage, 100 = default Rush speed
             DelayTime = 3, -- Time before starting cycles (seconds)
             HeightOffset = 0,
@@ -641,7 +641,7 @@ Tab:AddButton({
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "A-60", -- Custom name of your entity
-    Model = "https://github.com/fnaclol/sussy-bois/blob/main/A-60V2.rbxm", -- Can be GitHub file or rbxassetid
+    Model = "https://github.com/sponguss/storage/blob/main/a-60.rbxm?raw=true", -- Can be GitHub file or rbxassetid
     Speed = 200, -- Percentage, 100 = default Rush speed
     DelayTime = 3, -- Time before starting cycles (seconds)
     HeightOffset = 0,
