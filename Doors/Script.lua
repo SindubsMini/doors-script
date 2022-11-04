@@ -103,18 +103,6 @@ entityTimeTab:AddButton({
 })
 
 entityTimeTab:AddButton({
-    Name = "Timothy Every 15 Secs",
-    Callback = function ()
-        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
-
-        while true do
-            coroutine.wrap(function () require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.SpiderJumpscare)(Data workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:WaitForChild("Dresser").DrawerContainer, 0.2)  end)()
-        task.wait(15)
-        end
-    end
-})
-
-entityTimeTab:AddButton({
     Name = "Rebound Every 15 Secs",
     Callback = function ()
         local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
