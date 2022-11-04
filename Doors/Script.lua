@@ -1,6 +1,218 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Doors Script", HidePremium = false, SaveConfig = true, ConfigFolder = "Doors Summon"})
 
+if game.PlaceId == 6516141723 then
+    OrionLib:MakeNotification({
+        Name = "WARNING!",
+        Content = "Do NOT execute Doors Script in the lobby as it could get you permanently banned!",
+        Time = 30
+    })
+    return
+end
+
+local entityTimeTab = Window:MakeTab({
+    Name = "Entity Timer",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+entityTimeTab:AddButton({
+    Name = "Screech Every 15 Secs",
+    Callback = function ()
+    local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+
+    while true do -- Will run the script forever
+        coroutine.wrap(function() require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech)(Data) end)() -- Coroutines prevent the script from yielding.
+    task.wait(15) 
+end
+end
+})
+
+entityTimeTab:AddButton({
+    Name = "Halt Every 15 Secs",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+
+        while true do
+            coroutine.wrap(function () require(game.ReplicatedStorage.ClientModules.EntityModules.Shade).stuff(Data, workspace.CurrentRooms[tostring(game.ReplicatedStorage.GameData.LatestRoom.Value)]) end)()    
+        task.wait(15)
+        end
+        
+    end
+})
+
+
+entityTimeTab:AddButton({
+    Name = "Glitch Every 15 Secs",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+
+        while true do
+            coroutine.wrap(function () require(game.ReplicatedStorage.ClientModules.EntityModules.Glitch).stuff(Data, workspace.CurrentRooms[tostring(game.ReplicatedStorage.GameData.LatestRoom.Value)]) end)()
+        task.wait(15)     
+        end
+    end
+})
+
+entityTimeTab:AddButton({
+    Name = "Break Lights Every 15 Secs",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+    
+        while true do
+            coroutine.wrap(function () firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "breakLights", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 0.416, 60) end)()
+        task.wait(15)     
+        end
+    end
+})
+
+entityTimeTab:AddButton({
+    Name = "Flicker Lights Every 15 Secs",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+
+        while true do
+            coroutine.wrap(function () firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1) end)()
+        task.wait(15)
+        end
+    end
+})
+
+entityTimeTab:AddButton({
+    Name = "Seek Eyes Every 15 Secs",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+
+        while true do
+            coroutine.wrap(function () require(game:GetService("ReplicatedStorage").ClientModules.EntityModules.Seek).tease(nil, workspace.CurrentRooms:WaitForChild(game.ReplicatedStorage.GameData.LatestRoom.Value), 14, 1665596753, true) end)()
+        task.wait(15)
+        end
+    end
+})
+
+entityTimeTab:AddButton({
+    Name = "HeartBeat MiniGame Every 15 Secs",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+
+        while true do
+            coroutine.wrap(function () firesignal(game.ReplicatedStorage.Bricks.ClutchHeartbeat.OnClientEvent)  end)()
+        task.wait(15)
+        end
+    end
+})
+
+entityTimeTab:AddButton({
+    Name = "Timothy Every 15 Secs",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+
+        while true do
+            coroutine.wrap(function () require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.SpiderJumpscare)(Data workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:WaitForChild("Dresser").DrawerContainer, 0.2)  end)()
+        task.wait(15)
+        end
+    end
+})
+
+entityTimeTab:AddButton({
+    Name = "Rebound Every 15 Secs",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+
+        while true do
+            coroutine.wrap(function ()
+                local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+        
+                -- Create entity
+                local entity = Creator.createEntity({
+                    CustomName = "Rebound", -- Custom name of your entity
+                    Model = "rbxassetid://11401769490", -- Can be GitHub file or rbxassetid
+                    Speed = 150, -- Percentage, 100 = default Rush speed
+                    DelayTime = 3, -- Time before starting cycles (seconds)
+                    HeightOffset = 0,
+                    CanKill = false,
+                    KillRange = 50,
+                    BreakLights = false,
+                    BackwardsMovement = false,
+                    FlickerLights = {
+                        true, -- Enabled/Disabled
+                        2.5, -- Time (seconds)
+                    },
+                    Cycles = {
+                        Min = 1,
+                        Max = 6,
+                        WaitTime = 7,
+                    },
+                    CamShake = {
+                        true, -- Enabled/Disabled
+                        {5, 15, 0.1, 1}, -- Shake values (don't change if you don't know)
+                        100, -- Shake start distance (from Entity to you)
+                    },
+                    Jumpscare = {
+                        false, -- Enabled/Disabled
+                        {
+                            Image1 = "rbxassetid://11372489796", -- Image1 url
+                            Image2 = "rbxassetid://11372489796", -- Image2 url
+                            Shake = true,
+                            Sound1 = {
+                                10483790459, -- SoundId
+                                { Volume = 0.5 }, -- Sound properties
+                            },
+                            Sound2 = {
+                                10483837590, -- SoundId
+                                { Volume = 0.5 }, -- Sound properties
+                            },
+                            Flashing = {
+                                true, -- Enabled/Disabled
+                                Color3.fromRGB(255, 0, 0), -- Color
+                            },
+                            Tease = {
+                                true, -- Enabled/Disabled
+                                Min = 1,
+                                Max = 3,
+                            },
+                        },
+                    },
+                    CustomDialog = {"You died to Rebound...", "The lights flicker upon its scream.", "It is also tricky, as it rebounds.", "You need to hide to around 6 times."}, -- Custom death message
+                })
+                
+                -----[[ Advanced ]]-----
+                entity.Debug.OnEntitySpawned = function(entityTable)
+                    print("Entity has spawned:", entityTable.Model)
+                end
+                
+                entity.Debug.OnEntityDespawned = function(entityTable)
+                    print("Entity has despawned:", entityTable.Model)
+                end
+                
+                entity.Debug.OnEntityStartMoving = function(entityTable)
+                    print("Entity has started moving:", entityTable.Model)
+                end
+                
+                entity.Debug.OnEntityFinishedRebound = function(entityTable)
+                    print("Entity has finished rebound:", entityTable.Model)
+                end
+                
+                entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
+                    print("Entity:", entityTable.Model, "has entered room:", room)
+                end
+                
+                entity.Debug.OnLookAtEntity = function(entityTable)
+                    print("Player has looked at entity:", entityTable.Model)
+                end
+                
+                entity.Debug.OnDeath = function(entityTable)
+                    warn("Player has died.")
+                end
+                ------------------------
+                
+                -- Run the created entity
+                Creator.runEntity(entity)
+            end)()
+            task.wait(15)
+        end
+    end
+})
 
 local everyTab = Window:MakeTab({
     Name = "Summon Entity Every Door",
@@ -297,15 +509,15 @@ local Tab = Window:MakeTab({
 
 
 OrionLib:MakeNotification({
-    Name = "Script",
-    Content = "THIS SCRIPT IS IN ALPHA VERSION!!!",
-    Time = 9
+    Name = "Reminder!",
+    Content = "This script is still in development",
+    Time = 5
 })
 
 
 OrionLib:MakeNotification({
     Name = "Made By",
-    Content = " me in github:sindubsmini my discord: netzklap#7566",
+    Content = " me in github:SindubsMini my discord: netzklap#7566",
     Image = "rbxassetid://4483345998",
     Time = 3
 })
@@ -1274,8 +1486,7 @@ AdditionallyTab:AddParagraph("Warning!","these scripts are not mine!")
 AdditionallyTab:AddButton({
     Name = "Infinite Yield",
     Callback = function ()
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY//master/source')))()
-        
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source')))()
     end
 })
 
