@@ -2747,7 +2747,7 @@ Creator.runEntity(entity)
 })
 
 customTab:AddButton({
-    Name = "Saul",
+    Name = "Spawn Saul",
     Callback = function ()
         local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
 
@@ -2841,7 +2841,7 @@ Creator.runEntity(entity)
 })
 
 customTab:AddButton({
-    Name = "Wise Mystical Tree",
+    Name = "Spawn Wise Mystical Tree",
     Callback = function ()
         local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
 
@@ -2935,7 +2935,7 @@ Creator.runEntity(entity)
 })
 
 customTab:AddButton({
-    Name = "plamen6789", -- like
+    Name = "Spawn plamen6789", -- like
     Callback = function ()
         local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
 
