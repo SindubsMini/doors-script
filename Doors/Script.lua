@@ -3904,15 +3904,15 @@ local NotificationCoroutine = coroutine.create(function()
 end)
 
 
-local AdditionallyTab = Window:MakeTab({
-    Name = "Additionally",
+local MiscTab = Window:MakeTab({
+    Name = "Misc",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
-AdditionallyTab:AddParagraph("Warning!","these scripts are not mine!")
+MiscTab:AddParagraph("Warning!","these scripts are not mine!")
 
-AdditionallyTab:AddButton({
+MiscTab:AddButton({
     Name = "Infinite Yield",
     Callback = function ()
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY//master/source')))()
@@ -3920,7 +3920,7 @@ AdditionallyTab:AddButton({
     end
 })
 
-AdditionallyTab:AddButton({
+MiscTab:AddButton({
     Name = "the best script for the game doors is not advertising!",
     Callback = function ()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Quantiium/DoorsScript/main/LoadUI's.lua"))()
