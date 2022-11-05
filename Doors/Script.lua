@@ -9,7 +9,7 @@ local customTab = Window:MakeTab({
 })
 
 customTab:AddButton({
-    Name = "Spawn A-60",
+    Name = "Spawn A-60", -- fixed!! :)
     Callback = function ()
         local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
 
