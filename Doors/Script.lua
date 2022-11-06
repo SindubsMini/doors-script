@@ -9,6 +9,7 @@ NEW!! Spawn Jack Hallway.
 Notes:
 Soon all tabs will be sorted
 Right now I'm sick :(
+Updates won't be as frequent.
 ]]
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
