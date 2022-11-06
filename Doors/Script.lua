@@ -7,6 +7,8 @@ local itemsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+itemsTab:AddParagraph("Warning!","Only works on entites spawned by script!")
+
 itemsTab:AddButton({
     Name = "Give Crucifix",
     Callback = function ()
@@ -3818,16 +3820,6 @@ local ParadiseTab = Window:MakeTab({
     Name = "Paradise",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
-})
-
-ParadiseTab:AddButton({
-    Name = "Screech Paradise",
-    Callback = function ()
-        while true do
-            coroutine.wrap(function() require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech)(Data) end)()
-            task.wait()
-            end
-    end
 })
 
 ParadiseTab:AddButton({
