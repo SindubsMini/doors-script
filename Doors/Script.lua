@@ -4319,6 +4319,6 @@ local CreditsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-CreditsTab:AddParagraph("Credits to","SindubsMini, plamen6789 to custom entites model!!. , Dreadmanita to every door script, (unknown) or spongus#7609 to crucifix script, screech#6908 the best script for the game DOORS!  ","My GitHub: SindubsMini - my discord: netzklap#7566","script is still in alpha version...")
+CreditsTab:AddParagraph("Credits to","SindubsMini, plamen6789 to custom entites model!!. , Dreadmania to every door script,  screech#6908 to crucifix script, screech#6908 the best script for the game DOORS!  ","My GitHub: SindubsMini - my discord: netzklap#7566","script is still in alpha version...")
 
 OrionLib:Init()
