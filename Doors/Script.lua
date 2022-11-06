@@ -1,9 +1,22 @@
+--[[
+Changelog:
+Changed some icons.
+Added a new paragraph in the credits tab.
+NEW!! Spawn Jack Hallway.
+]]
+
+--[[
+Notes:
+Soon all tabs will be sorted
+Right now I'm sick :(
+]]
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Doors Script", HidePremium = false, SaveConfig = true, ConfigFolder = "Doors Summon"})
 
 local itemsTab = Window:MakeTab({
     Name = "Items",
-    Icon = "rbxassetid://4483345998",
+    Icon = "rbxassetid://7734068321",
     PremiumOnly = false
 })
 
@@ -37,7 +50,7 @@ itemsTab:AddButton({
 
 local customTab = Window:MakeTab({
     Name = "Custom Entites",
-    Icon = "rbxassetid://4483345998",
+    Icon = "rbxassetid://11372950109",
     PremiumOnly = false
 })
 
@@ -3063,8 +3076,8 @@ Creator.runEntity(entity)
 
 
 local everyTab = Window:MakeTab({
-    Name = "Summon Entity Every Door",
-    Icon = "rbxassetid://4483345998",
+    Name = "Entity Every Door",
+    Icon = "rbxassetid://11372950109",
     PremiumOnly = false
 })
 
@@ -3527,7 +3540,7 @@ everyTab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "Summon Entity",
-    Icon = "rbxassetid://4483345998",
+    Icon = "rbxassetid://11372950109",
     PremiumOnly = false
 })
 
@@ -4284,7 +4297,7 @@ end)
 
 local MiscTab = Window:MakeTab({
     Name = "Misc",
-    Icon = "rbxassetid://4483345998",
+    Icon = "rbxassetid://7734042071",
     PremiumOnly = false
 })
 
