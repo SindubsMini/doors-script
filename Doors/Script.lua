@@ -1,18 +1,8 @@
 --[[
 Changelog:
-Changed some icons.
-Added a new paragraph in the credits tab.
-NEW!! Spawn Jack Hallway.
-Rename Button Spawn Eyes
-New secret button!
-Changed Credits Tab
-]]
-
---[[
-Notes:
-Soon all tabs will be sorted
-Right now I'm sick :(
-]]
+Fixed Eyes
+NEW! Skeleton Key by screech#6908
+]]--
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Doors Script", HidePremium = false, SaveConfig = true, ConfigFolder = "Doors Summon"})
@@ -49,6 +39,85 @@ itemsTab:AddButton({
         end)
             end,
         
+})
+
+itemsTab:AddButton({
+    Name = "Give Skeleton Key",
+    Callback = function ()
+        function skelly()
+            local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
+        
+        
+        -- Get current room
+        local room = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+        
+        
+        -- Replicate door
+        local replicatedDoor = DoorReplication.ReplicateDoor(room, {
+            CustomKeyName = "Skeleton Key",
+            DestroyKey = false,
+        })
+        
+        
+        -- Debug features [advanced]
+        replicatedDoor.Debug.OnDoorOpened = function(doorTable)
+            warn("Door", doorTable.Model, "has opened")
+        end
+        end
+        local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
+        
+        
+        -- Get current room
+        local room = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+        
+        
+        -- Replicate door
+        local replicatedDoor = DoorReplication.ReplicateDoor(room, {
+            CustomKeyName = "Skeleton Key",
+            DestroyKey = false,
+        })
+        
+        
+        -- Debug features [advanced]
+        replicatedDoor.Debug.OnDoorOpened = function(doorTable)
+            warn("Door", doorTable.Model, "has opened")
+        end
+                local shadow=game:GetObjects("rbxassetid://11491147151")[1]
+        shadow.Parent = game.Players.LocalPlayer.Backpack
+        local anim = Instance.new("Animation")
+        local anim2 = Instance.new("Animation")
+        anim.AnimationId = 'https://www.roblox.com/Assest?ID=6525854363'
+        anim2.AnimationId = 'https://www.roblox.com/Assest?ID=10526835827'
+        local track
+         
+        shadow.Equipped:Connect(function()
+            track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim) 
+                track.Priority = Enum.AnimationPriority.Action
+                track:Play()
+                track.Looped = false
+                wait(1.4)
+            track2 = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim2) 
+                track2.Priority = Enum.AnimationPriority.Action
+                track2:Play()
+                track2.Looped = false
+         
+        end)
+         
+        shadow.Unequipped:Connect(function()
+            if track then
+                track:Stop()
+                track2:Stop()
+            end
+        end)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+            if workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Door:FindFirstChild("Lock") then
+                print("YES KEY")
+           skelly()
+           else
+               print("no.")
+        end
+        end)
+    end
 })
 
 local customTab = Window:MakeTab({
@@ -4328,7 +4397,7 @@ local CreditsTab = Window:MakeTab({
 })
 
 
-CreditsTab:AddParagraph("Credits to","SindubsMini, plamen6789 to custom entites model!!. , Dreadmania to every door script,  screech#6908 to crucifix script, to the best script for the game DOORS!, to sound in the credits tab.","My GitHub: SindubsMini - my discord: netzklap#7566")
+CreditsTab:AddParagraph("Credits to","SindubsMini, plamen6789 to custom entites model!!. , Dreadmania to every door script,  screech#6908 to crucifix script, to skeleton key script, to the best script for the game DOORS!, to sound in the credits tab.","My GitHub: SindubsMini - my discord: netzklap#7566")
 
 CreditsTab:AddButton({
     Name = "bruh",
