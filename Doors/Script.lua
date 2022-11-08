@@ -1,3 +1,7 @@
+--[[THANK YOU GUYS FOR USE MY SCRIPT, I WILL RETURN THE "Summon Entity Every 15 Seconds" FUNCTION TOMORROW, I DON'T KNOW HOW IT HAPPENED, SORRY.]]
+
+
+
 --[[
 Changelog:
 Fixed Eyes
