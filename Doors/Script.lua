@@ -14,6 +14,13 @@ Deleted Tab "Paradise", Jack Hallway Move To Tab "Summon Entites Every Door"
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/source%20(OrionLib)')))()
 local Window = OrionLib:MakeWindow({Name = "Doors Script", HidePremium = false, SaveConfig = true, ConfigFolder = "Doors Summon"})
 
+OrionLib:MakeNotification({
+    Name = "READ ME!!!",
+    Content = "THANK YOU GUYS FOR USE MY SCRIPT, I WILL RETURN THE "Summon Entity Every 15 Seconds" FUNCTION TOMORROW, I DON'T KNOW HOW IT HAPPENED, SORRY.",
+    Image = "rbxassetid://4483345998",
+    Time = 10
+})
+
 local itemsTab = Window:MakeTab({
     Name = "Items",
     Icon = "rbxassetid://7734068321",
