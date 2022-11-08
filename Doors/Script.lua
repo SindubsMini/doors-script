@@ -1,7 +1,10 @@
 --[[
 Changelog:
-Fixed Eyes (why is screech#6908's Eyes model stolen?)
-changed the name and icon when running the script
+Fixed Eyes
+Some changes
+Added new script Doors Speedrun Mode by MuhammadGames#0017
+Rename Tab "Misc" to "Extra"
+Deleted Tab "Paradise", Jack Hallway Move To Tab "Summon Entites Every Door"
 ]]--
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/source%20(OrionLib)')))()
@@ -18,7 +21,7 @@ itemsTab:AddParagraph("Warning!","Only works on entites spawned by script!")
 itemsTab:AddButton({
     Name = "Give Crucifix",
     Callback = function ()
-        local shadow=game:GetObjects("rbxassetid://11480603603")[1]
+--[[        local shadow=game:GetObjects("rbxassetid://11480603603")[1]
         shadow.Parent = game.Players.LocalPlayer.Backpack
         local anim = Instance.new("Animation")
         anim.AnimationId = 'https://www.roblox.com/Assest?ID=9982615727'
@@ -38,11 +41,14 @@ itemsTab:AddButton({
             end
         end)
             end,
-        
+]]
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Johnny39871/assets/main/crucifixo"))()
+        end
 })
 
 itemsTab:AddButton({
     Name = "Give Skeleton Key",
+    Info = "Opens All Doors",
     Callback = function ()
         function skelly()
             local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
@@ -127,7 +133,7 @@ local customTab = Window:MakeTab({
 })
 
 customTab:AddButton({
-    Name = "Spawn A-60", -- fixed!! :)
+    Name = "Spawn A-60", 
     Callback = function ()
         local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
 
@@ -3257,6 +3263,24 @@ everyTab:AddButton({
 })
 
 everyTab:AddButton({
+    Name = "Jack Hallway Every Door",
+    Callback = function ()
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+            local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+            local shadow=game:GetObjects("rbxassetid://11446576619")[1]
+            firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1)
+            shadow:PivotTo(currentLoadedRoom.RoomStart.CFrame)
+            wait(0.2)
+            shadow.Parent=workspace
+            shadow.Sound:Play()
+            task.wait(0.3)
+            shadow:Destroy()
+            firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "tryp", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 10)
+            end)
+    end
+})
+
+everyTab:AddButton({
     Name = "Halt Every Door",
     Callback = function ()
         local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
@@ -3765,8 +3789,11 @@ Tab:AddButton({
             end
             task.wait(0.2)
         end
+        
+                       
     end
 })
+
 
 Tab:AddButton({
     Name = "Heartbeat Minigame",
@@ -3925,30 +3952,6 @@ Tab:AddButton({
     end
 })
 
-local ParadiseTab = Window:MakeTab({
-    Name = "Paradise",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-ParadiseTab:AddButton({
-    Name = "Jack Paradise",
-    Callback = function ()
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
-            local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
-            local shadow=game:GetObjects("rbxassetid://11446576619")[1]
-            firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1)
-            shadow:PivotTo(currentLoadedRoom.RoomStart.CFrame)
-            wait(0.2)
-            shadow.Parent=workspace
-            shadow.Sound:Play()
-            task.wait(0.3)
-            shadow:Destroy()
-            firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "tryp", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 10)
-            end)
-        
-    end
-})
 
 local PlayerTab = Window:MakeTab({
     Name = "Player",
@@ -4391,15 +4394,15 @@ local NotificationCoroutine = coroutine.create(function()
 end)
 
 
-local MiscTab = Window:MakeTab({
-    Name = "Misc",
+local ExtraTab = Window:MakeTab({
+    Name = "Extra",
     Icon = "rbxassetid://7734042071",
     PremiumOnly = false
 })
 
-MiscTab:AddParagraph("Warning!","these scripts are not mine!")
+ExtraTab:AddParagraph("Warning!","these scripts are not mine!")
 
-MiscTab:AddButton({
+ExtraTab:AddButton({
     Name = "Infinite Yield",
     Callback = function ()
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source')))()
@@ -4407,10 +4410,17 @@ MiscTab:AddButton({
     end
 })
 
-MiscTab:AddButton({
+ExtraTab:AddButton({
     Name = "the best script for the game DOORS is not advertising!",
     Callback = function ()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Johnny39871/assets/main/DoorsHubSpawner'))()
+    end
+})
+
+ExtraTab:AddButton({
+    Name = "Doors Speedrun Mode [50 door is impossible, I think]",
+    Callback = function ()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/MuhXd/DoorSuff/main/DoorsModes/DoorSpeedRun%20Mode'))()
     end
 })
 
@@ -4421,14 +4431,6 @@ local CreditsTab = Window:MakeTab({
 })
 
 
-CreditsTab:AddParagraph("Credits to","SindubsMini, plamen6789 to custom entites model!!. , Dreadmania to every door script,  screech#6908 to crucifix script, to skeleton key script, to the best script for the game DOORS!, to sound in the credits tab.","My GitHub: SindubsMini - my discord: netzklap#7566")
-
-
-
-
-
-
-
-
+CreditsTab:AddParagraph("Credits to","SindubsMini, plamen6789 to custom entites model!!. , Dreadmania to every door script, Break Light, Flicker Light, screech#6908 to crucifix script, to skeleton key script, to the best script for the game DOORS!, to sound in the credits tab, MuhammadGames#0017 to Doors Speedrun Script","My GitHub: SindubsMini - my discord: netzklap#7566")
 
 OrionLib:Init()
