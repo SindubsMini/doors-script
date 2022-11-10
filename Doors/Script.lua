@@ -1,9 +1,3 @@
---[[
-Changelog:
-Some changes
-FINALLY! Timer Entity Tab RETURNED
-]]--
-
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/source%20(OrionLib)')))()
 local Window = OrionLib:MakeWindow({Name = "Doors Script", HidePremium = false, SaveConfig = true, ConfigFolder = "Doors Summon"})
 
@@ -312,9 +306,9 @@ customTab:AddButton({
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "A-60", -- Custom name of your entity
-    Model = "https://github.com/plamen6789/CustomDoorsMonsters/blob/main/A-60.rbxm", -- Can be GitHub file or rbxassetid
+    Model = "https://github.com/plamen6789/CustomDoorsMonsters/blob/main/A-60.rbxm?raw=true", -- Can be GitHub file or rbxassetid
     Speed = 300, -- Percentage, 100 = default Rush speed
-    DelayTime = 3, -- Time before starting cycles (seconds)
+    DelayTime = 1, -- Time before starting cycles (seconds)
     HeightOffset = 0,
     CanKill = false,
     KillRange = 50,
@@ -509,7 +503,7 @@ customTab:AddButton({
         local entity = Creator.createEntity({
             CustomName = "Rebound", -- Custom name of your entity
             Model = "rbxassetid://11401769490", -- Can be GitHub file or rbxassetid
-            Speed = 150, -- Percentage, 100 = default Rush speed
+            Speed = 300, -- Percentage, 100 = default Rush speed
             DelayTime = 3, -- Time before starting cycles (seconds)
             HeightOffset = 0,
             CanKill = false,
@@ -4699,5 +4693,13 @@ local CreditsTab = Window:MakeTab({
 
 
 CreditsTab:AddParagraph("Credits to","plamen6789 to custom entites model!!. Dreadmania to every door script, Break Light, Flicker Light, Loop Script. screech#6908 to crucifix script, to skeleton key script, to the best script for the game DOORS!. MuhammadGames#0017 to Doors Speedrun Script","My GitHub: SindubsMini - my discord: netzklap#7566")
+
+local UpdateTab = Window:MakeTab({
+    Name = "Update Log",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+UpdateTab:AddParagraph("10.11.2022","Some changes, FINNALY! Timer Entity Tab RETURNED, New Tab Update Log.")
 
 OrionLib:Init()
