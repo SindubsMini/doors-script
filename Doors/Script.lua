@@ -4702,4 +4702,6 @@ local UpdateTab = Window:MakeTab({
 
 UpdateTab:AddParagraph("10.11.2022","Some changes, FINNALY! Timer Entity Tab RETURNED, New Tab Update Log.")
 
+UpdateTab:AddParagraph("Soon...","this script will change the library from OrionLib to RayField (because it is outdated)")
+
 OrionLib:Init()
