@@ -1,130 +1,21 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/source%20(OrionLib)')))()
 local Window = OrionLib:MakeWindow({Name = "Doors Script", HidePremium = false, SaveConfig = true, ConfigFolder = "Doors Summon"})
 
+if game.PlaceId == 6516141723 then
+    OrionLib:MakeNotification({
+        Name = "WARNING!",
+        Content = "Do NOT execute Doors in the lobby as it could get you permanently banned!",
+        Time = 30
+    })
+    return
+end
 
-local itemsTab = Window:MakeTab({
-    Name = "Items",
-    Icon = "rbxassetid://7734068321",
-    PremiumOnly = false
-})
-
-itemsTab:AddParagraph("Warning!","Only works on entites spawned by script!")
-
-itemsTab:AddButton({
-    Name = "Give Crucifix",
-    Callback = function ()
---[[        local shadow=game:GetObjects("rbxassetid://11480603603")[1]
-        shadow.Parent = game.Players.LocalPlayer.Backpack
-        local anim = Instance.new("Animation")
-        anim.AnimationId = 'https://www.roblox.com/Assest?ID=9982615727'
-        local track
-         
-        shadow.Equipped:Connect(function()
-            track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim) 
-                track.Priority = Enum.AnimationPriority.Action
-                track:Play()
-                track.Looped = true
-         
-        end)
-         
-        shadow.Unequipped:Connect(function()
-            if track then
-                track:Stop()
-            end
-        end)
-            end,
-]]
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Johnny39871/assets/main/crucifixo"))()
-        end
-})
-
-itemsTab:AddButton({
-    Name = "Give Skeleton Key",
-    Info = "Opens All Doors",
-    Callback = function ()
-        function skelly()
-            local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
-        
-        
-        -- Get current room
-        local room = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
-        
-        
-        -- Replicate door
-        local replicatedDoor = DoorReplication.ReplicateDoor(room, {
-            CustomKeyName = "Skeleton Key",
-            DestroyKey = false,
-        })
-        
-        
-        -- Debug features [advanced]
-        replicatedDoor.Debug.OnDoorOpened = function(doorTable)
-            warn("Door", doorTable.Model, "has opened")
-        end
-        end
-        local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
-        
-        
-        -- Get current room
-        local room = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
-        
-        
-        -- Replicate door
-        local replicatedDoor = DoorReplication.ReplicateDoor(room, {
-            CustomKeyName = "Skeleton Key",
-            DestroyKey = false,
-        })
-        
-        
-        -- Debug features [advanced]
-        replicatedDoor.Debug.OnDoorOpened = function(doorTable)
-            warn("Door", doorTable.Model, "has opened")
-        end
-                local shadow=game:GetObjects("rbxassetid://11491147151")[1]
-        shadow.Parent = game.Players.LocalPlayer.Backpack
-        local anim = Instance.new("Animation")
-        local anim2 = Instance.new("Animation")
-        anim.AnimationId = 'https://www.roblox.com/Assest?ID=6525854363'
-        anim2.AnimationId = 'https://www.roblox.com/Assest?ID=10526835827'
-        local track
-         
-        shadow.Equipped:Connect(function()
-            track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim) 
-                track.Priority = Enum.AnimationPriority.Action
-                track:Play()
-                track.Looped = false
-                wait(1.4)
-            track2 = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim2) 
-                track2.Priority = Enum.AnimationPriority.Action
-                track2:Play()
-                track2.Looped = false
-         
-        end)
-         
-        shadow.Unequipped:Connect(function()
-            if track then
-                track:Stop()
-                track2:Stop()
-            end
-        end)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
-            if workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Door:FindFirstChild("Lock") then
-                print("YES KEY")
-           skelly()
-           else
-               print("no.")
-        end
-        end)
-    end
-})
 
 local time = Window:MakeTab({
     Name = "Entity Timer",
     Icon = "rbxassetid://11372950109",
     PremiumOnly = false
 })
-
-time:AddParagraph("sorry guys", "so far only ordinary entities")
 
 time:AddButton({
     Name = "Screech Every 15 Secs",
@@ -407,6 +298,101 @@ customTab:AddButton({
 local entity = Creator.createEntity({
     CustomName = "Firebrand", -- Custom name of your entity
     Model = "https://github.com/fnaclol/sussy-bois/raw/main/FireBrand3.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 400, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = false,
+    KillRange = 50,
+    BreakLights = true,
+    BackwardsMovement = false,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 2,
+        Max = 2,
+        WaitTime = 2,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {5, 15, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://10483855823", -- Image1 url
+            Image2 = "rbxassetid://10483999903", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                10483790459, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    CustomDialog = {"You died to whom you call FireBrand", "FireBrand will spawn only on your will", "When you hear him spawn you only have 2 seconds to hide", "Vents do not save you aswell"}, -- Custom death message
+})
+
+-----[[ Advanced ]]-----
+entity.Debug.OnEntitySpawned = function(entityTable)
+    print("Entity has spawned:", entityTable.Model)
+end
+
+entity.Debug.OnEntityDespawned = function(entityTable)
+    print("Entity has despawned:", entityTable.Model)
+end
+
+entity.Debug.OnEntityStartMoving = function(entityTable)
+    print("Entity has started moving:", entityTable.Model)
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entityTable)
+    print("Entity has finished rebound:", entityTable.Model)
+end
+
+entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
+    print("Entity:", entityTable.Model, "has entered room:", room)
+end
+
+entity.Debug.OnLookAtEntity = function(entityTable)
+    print("Player has looked at entity:", entityTable.Model)
+end
+
+entity.Debug.OnDeath = function(entityTable)
+    warn("Player has died.")
+end
+------------------------
+
+-- Run the created entity
+Creator.runEntity(entity)
+
+        
+    end
+})
+
+customTab:AddButton({
+    Name = "Spawn Null",
+    Callback = function ()
+        local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+-- Create entity
+local entity = Creator.createEntity({
+    CustomName = "Null", -- Custom name of your entity
+    Model = "https://github.com/plamen6789/CustomDoorsMonsters/blob/main/Null.rbxm?raw=true", -- Can be GitHub file or rbxassetid
     Speed = 400, -- Percentage, 100 = default Rush speed
     DelayTime = 2, -- Time before starting cycles (seconds)
     HeightOffset = 0,
@@ -3961,12 +3947,6 @@ Tab:AddButton({
 })
 
 
-Tab:AddButton({
-    Name = "Heartbeat Minigame",
-    Callback = function ()
-        firesignal(game.ReplicatedStorage.Bricks.ClutchHeartbeat.OnClientEvent) 
-    end
-})
 
 Tab:AddButton({
     Name = "Spawn Halt",
@@ -3976,7 +3956,6 @@ Tab:AddButton({
     
     end
 })
-
 
 Tab:AddButton({
     Name = "Spawn Glitch",
@@ -4081,6 +4060,8 @@ Tab:AddButton({
     end
 })
 
+
+
 Tab:AddButton({
     Name = "Spawn Rush [Killable]",
     Callback = function ()
@@ -4175,41 +4156,119 @@ Tab:AddButton({
     end
 })
 
-
-Tab:AddButton({
-    Name = "Break Lights",
-    Callback = function ()
-        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
-        firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "breakLights", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 0.416, 60) 
-    end
+local itemsTab = Window:MakeTab({
+    Name = "Items",
+    Icon = "rbxassetid://7734068321",
+    PremiumOnly = false
 })
 
+itemsTab:AddParagraph("Warning!","Only works on entites spawned by script!")
 
-Tab:AddButton({
-    Name = "Flicker Lights",
+itemsTab:AddButton({
+    Name = "Give Crucifix",
     Callback = function ()
-        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
-        firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1) 
-    end
+--[[        local shadow=game:GetObjects("rbxassetid://11480603603")[1]
+        shadow.Parent = game.Players.LocalPlayer.Backpack
+        local anim = Instance.new("Animation")
+        anim.AnimationId = 'https://www.roblox.com/Assest?ID=9982615727'
+        local track
+         
+        shadow.Equipped:Connect(function()
+            track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim) 
+                track.Priority = Enum.AnimationPriority.Action
+                track:Play()
+                track.Looped = true
+         
+        end)
+         
+        shadow.Unequipped:Connect(function()
+            if track then
+                track:Stop()
+            end
+        end)
+            end,
+]]
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Johnny39871/assets/main/crucifixo"))()
+        end
 })
 
-
-Tab:AddButton({
-    Name = "Seek Eyes",
+itemsTab:AddButton({
+    Name = "Give Skeleton Key",
+    Info = "Opens All Doors",
     Callback = function ()
-        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
-        require(game:GetService("ReplicatedStorage").ClientModules.EntityModules.Seek).tease(nil, workspace.CurrentRooms:WaitForChild(game.ReplicatedStorage.GameData.LatestRoom.Value), 14, 1665596753, true)
-    end
-})
-
-
-Tab:AddButton({
-    Name = "Red Room",
-    Callback = function ()
-        local v1 = require(game.ReplicatedStorage.ClientModules.Module_Events)
-        local room = workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")]
-        local seconds = 1000000
-        v1.tryp(workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")], seconds)
+        function skelly()
+            local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
+        
+        
+        -- Get current room
+        local room = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+        
+        
+        -- Replicate door
+        local replicatedDoor = DoorReplication.ReplicateDoor(room, {
+            CustomKeyName = "Skeleton Key",
+            DestroyKey = false,
+        })
+        
+        
+        -- Debug features [advanced]
+        replicatedDoor.Debug.OnDoorOpened = function(doorTable)
+            warn("Door", doorTable.Model, "has opened")
+        end
+        end
+        local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
+        
+        
+        -- Get current room
+        local room = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+        
+        
+        -- Replicate door
+        local replicatedDoor = DoorReplication.ReplicateDoor(room, {
+            CustomKeyName = "Skeleton Key",
+            DestroyKey = false,
+        })
+        
+        
+        -- Debug features [advanced]
+        replicatedDoor.Debug.OnDoorOpened = function(doorTable)
+            warn("Door", doorTable.Model, "has opened")
+        end
+                local shadow=game:GetObjects("rbxassetid://11491147151")[1]
+        shadow.Parent = game.Players.LocalPlayer.Backpack
+        local anim = Instance.new("Animation")
+        local anim2 = Instance.new("Animation")
+        anim.AnimationId = 'https://www.roblox.com/Assest?ID=6525854363'
+        anim2.AnimationId = 'https://www.roblox.com/Assest?ID=10526835827'
+        local track
+         
+        shadow.Equipped:Connect(function()
+            track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim) 
+                track.Priority = Enum.AnimationPriority.Action
+                track:Play()
+                track.Looped = false
+                wait(1.4)
+            track2 = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim2) 
+                track2.Priority = Enum.AnimationPriority.Action
+                track2:Play()
+                track2.Looped = false
+         
+        end)
+         
+        shadow.Unequipped:Connect(function()
+            if track then
+                track:Stop()
+                track2:Stop()
+            end
+        end)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+            if workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Door:FindFirstChild("Lock") then
+                print("YES KEY")
+           skelly()
+           else
+               print("no.")
+        end
+        end)
     end
 })
 
@@ -4225,6 +4284,7 @@ local FullHealth = 100
 PlayerTab:AddButton({
     Name = "100 HP",
     Callback = function ()
+        FullHealth = 100
         game.Players.LocalPlayer.Character.Humanoid.Health = FullHealth
 
     end
@@ -4261,6 +4321,162 @@ PlayerTab:AddToggle({
         pcl.Enabled = Value
     end
 })
+
+local KeybindsSelction = Window:MakeTab({
+    Name = "Keybinds",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+KeybindsSelction:AddBind({
+    Name = "Summon Screech",
+    Default = Enum.KeyCode.KeypadOne,
+    Hold = false,
+    Flag = "SummonScreech",
+    Save = true,
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech)(Data)
+    end
+})
+
+KeybindsSelction:AddBind({
+    Name = "Summon Halt",
+    Default = Enum.KeyCode.KeypadTwo,
+    Hold = false,
+    Flag = "SummonHalt",
+    Save = true,
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        require(game.ReplicatedStorage.ClientModules.EntityModules.Shade).stuff(Data, workspace.CurrentRooms[tostring(game.ReplicatedStorage.GameData.LatestRoom.Value)])    end
+})
+
+KeybindsSelction:AddBind({
+    Name = "Give Crucifix",
+    Default = Enum.KeyCode.KeypadThree,
+    Hold = false,
+    Flag = "GiveCrucifix",
+    Save = true,
+    Callback = function ()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Johnny39871/assets/main/crucifixo"))()
+    end
+    })
+
+KeybindsSelction:AddBind({
+    Name = "Give Skeleton Key",
+    Default = Enum.KeyCode.KeypadFour,
+    Hold = false,
+    Flag = "Give Skeleton Key",
+    Save = true,
+    Callback = function ()
+        function skelly()
+            local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
+        
+        
+        -- Get current room
+        local room = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+        
+        
+        -- Replicate door
+        local replicatedDoor = DoorReplication.ReplicateDoor(room, {
+            CustomKeyName = "Skeleton Key",
+            DestroyKey = false,
+        })
+        
+        
+        -- Debug features [advanced]
+        replicatedDoor.Debug.OnDoorOpened = function(doorTable)
+            warn("Door", doorTable.Model, "has opened")
+        end
+        end
+        local DoorReplication = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Door%20Replication/Source.lua"))()
+        
+        
+        -- Get current room
+        local room = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+        
+        
+        -- Replicate door
+        local replicatedDoor = DoorReplication.ReplicateDoor(room, {
+            CustomKeyName = "Skeleton Key",
+            DestroyKey = false,
+        })
+        
+        
+        -- Debug features [advanced]
+        replicatedDoor.Debug.OnDoorOpened = function(doorTable)
+            warn("Door", doorTable.Model, "has opened")
+        end
+                local shadow=game:GetObjects("rbxassetid://11491147151")[1]
+        shadow.Parent = game.Players.LocalPlayer.Backpack
+        local anim = Instance.new("Animation")
+        local anim2 = Instance.new("Animation")
+        anim.AnimationId = 'https://www.roblox.com/Assest?ID=6525854363'
+        anim2.AnimationId = 'https://www.roblox.com/Assest?ID=10526835827'
+        local track
+         
+        shadow.Equipped:Connect(function()
+            track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim) 
+                track.Priority = Enum.AnimationPriority.Action
+                track:Play()
+                track.Looped = false
+                wait(1.4)
+            track2 = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(anim2) 
+                track2.Priority = Enum.AnimationPriority.Action
+                track2:Play()
+                track2.Looped = false
+         
+        end)
+         
+        shadow.Unequipped:Connect(function()
+            if track then
+                track:Stop()
+                track2:Stop()
+            end
+        end)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+            if workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Door:FindFirstChild("Lock") then
+                print("YES KEY")
+           skelly()
+           else
+               print("no.")
+        end
+        end)    end
+})
+
+KeybindsSelction:AddBind({
+    Name = "Break Lights",
+    Default = Enum.KeyCode.KeypadFive,
+    Hold = false,
+    Flag = "Break Lights",
+    Save = true,
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "breakLights", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 0.416, 60)     end
+})
+
+KeybindsSelction:AddBind({
+    Name = "Flicker Lights",
+    Default = Enum.KeyCode.KeypadSix,
+    Hold = false,
+    Flag = "Flicker Lights",
+    Save = true,
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1)     end
+})
+
+KeybindsSelction:AddBind({
+    Name = "Seek's Eyes",
+    Default = Enum.KeyCode.KeypadSeven,
+    Hold = false,
+    Flag = "Seek's Eyes",
+    Save = true,
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        require(game:GetService("ReplicatedStorage").ClientModules.EntityModules.Seek).tease(nil, workspace.CurrentRooms:WaitForChild(game.ReplicatedStorage.GameData.LatestRoom.Value), 14, 1665596753, true)    end
+    })
+
 
 
 local VisualsTab = Window:MakeTab({
@@ -4664,6 +4880,51 @@ local ExtraTab = Window:MakeTab({
 ExtraTab:AddParagraph("Warning!","these scripts are not mine!")
 
 ExtraTab:AddButton({
+    Name = "Break Lights",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "breakLights", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 0.416, 60) 
+    end
+})
+
+
+ExtraTab:AddButton({
+    Name = "Flicker Lights",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1) 
+    end
+})
+
+
+ExtraTab:AddButton({
+    Name = "Seek's Eyes",
+    Callback = function ()
+        local Data = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+        require(game:GetService("ReplicatedStorage").ClientModules.EntityModules.Seek).tease(nil, workspace.CurrentRooms:WaitForChild(game.ReplicatedStorage.GameData.LatestRoom.Value), 14, 1665596753, true)
+    end
+})
+
+
+ExtraTab:AddButton({
+    Name = "Red Room",
+    Callback = function ()
+        local v1 = require(game.ReplicatedStorage.ClientModules.Module_Events)
+        local room = workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")]
+        local seconds = 1000000
+        v1.tryp(workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")], seconds)
+    end
+})
+
+ExtraTab:AddButton({
+    Name = "Heartbeat Minigame",
+    Callback = function ()
+        firesignal(game.ReplicatedStorage.Bricks.ClutchHeartbeat.OnClientEvent) 
+    end
+})
+
+
+ExtraTab:AddButton({
     Name = "Infinite Yield",
     Callback = function ()
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source')))()
@@ -4671,6 +4932,150 @@ ExtraTab:AddButton({
     end
 })
 
+ExtraTab:AddDropdown({
+    Name = "Next Room Actions",
+    Options = {"Hallway Jack","Shadow","Eyes"},
+    CurretOption = "Input",
+    Flag = "Dropdown1",
+    Callback = function(Option)
+        if Option == "Hallway Jack" then
+                 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+ local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+local shadow=game:GetObjects("rbxassetid://11499539790")[1]
+firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1)
+shadow:PivotTo(currentLoadedRoom.RoomStart.CFrame)
+wait(0.2)
+shadow.Parent=workspace
+shadow.Sound:Play()
+task.wait(0.3)
+shadow:Destroy()
+firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "tryp", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 10)
+            elseif Option == "Shadow" then
+                            game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+wait(0.2)
+local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+local shadow=game:GetObjects("rbxassetid://11454656473")[1]
+local num=math.floor(#currentLoadedRoom.Nodes:GetChildren()/2)
+shadow.CFrame=(
+ num==0 and currentLoadedRoom.Base or currentLoadedRoom.Nodes[num]
+).CFrame+Vector3.new(0,4,0)
+firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1)
+wait(0.2)
+shadow.Parent=workspace
+shadow.Initiate:Play()
+task.wait(0.3)
+shadow:Destroy()
+elseif Option == "Eyes" then
+ game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+  local enableDamage = true
+repenttimes = 0
+local deadeyescrucifix = false
+local repentcomplete = false
+local currentLoadedRoom = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+local eyes = game:GetObjects("rbxassetid://11488518082")[1]
+local num = math.floor(#currentLoadedRoom.Nodes:GetChildren() / 2)
+eyes.CFrame = (num == 0 and currentLoadedRoom.Base or currentLoadedRoom.Nodes[num]).CFrame + Vector3.new(0, 7, 0)
+
+eyes.Parent = workspace
+eyes.Initiate:Play()
+task.wait(0.5)
+eyes.Attachment.Eyes.Enabled = true
+eyes.whisper:Play()
+eyes.whisper.Looped = true
+function EyesHell()
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(10,30,0.7,0.1)
+ts = game:GetService("TweenService")
+wait(0.2)
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(2,30,5,2)
+wait(3)
+
+eyes.Scream:Play()
+ts:Create(eyes,TweenInfo.new(5),{CFrame = eyes.CFrame - Vector3.new(0,12,0)}):Play()
+wait(7)
+eyes:Destroy()
+end
+local hum = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+
+local function IsVisible(part)
+ local vec, found=workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+ local onscreen = found and vec.Z > 0
+ local cfg = RaycastParams.new();
+ cfg.FilterType = Enum.RaycastFilterType.Blacklist
+ cfg.FilterDescendantsInstances = {part};
+
+ local cast = workspace:Raycast(part.Position, (game.Players.LocalPlayer.Character.UpperTorso.Position - part.Position), cfg);
+ return (onscreen and true) and ((cast and cast.Instance).Parent==game.Players.LocalPlayer.Character and true)
+end
+
+while true do
+ if workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value] ~= currentLoadedRoom then
+     enableDamage = false
+     task.wait(0.2)
+     eyes:Destroy()
+ end
+ if enableDamage then
+     if (IsVisible(eyes)) and not game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") and deadeyescrucifix == false then
+     game.Players.LocalPlayer.Character.Humanoid.Health = game.Players.LocalPlayer.Character.Humanoid.Health - 10
+     wait(0.2)
+     elseif (IsVisible(eyes)) and game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") and repenttimes < 5 and deadeyescrucifix == false then
+     print("GET THAT AWAY FROM ME")
+     eyes.Repent:Play()
+     eyes.Attachment.Angry.Enabled = true
+     local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+
+camShake:ShakeOnce(5,50,0.7,0.2)
+     wait(0.7)
+     repenttimes = repenttimes + 1
+     print(repenttimes)
+     eyes.Attachment.Angry.Enabled = false
+     wait(0.4)
+     elseif game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") and repenttimes == 5 and deadeyescrucifix == false then
+     local hi = game.Players.LocalPlayer.Character:FindFirstChild("Crucifix").Handle:Clone()
+     hi.Anchored = true
+     hi.Parent = workspace
+     hi:PivotTo(game.Players.LocalPlayer.Character:FindFirstChild("Crucifix").Handle.CFrame)
+     game.Players.LocalPlayer.Character:FindFirstChild("Crucifix"):Destroy()
+     EyesHell()
+     enableDamage = false
+         if hum.Health <= 0 then
+             game:GetService("ReplicatedStorage").GameStats["Player_" .. game.Players.LocalPlayer.Name].Total.DeathCause.Value =
+                 "Eyes"
+             debug.setupvalue(
+                 getconnections(game:GetService("ReplicatedStorage").Bricks.DeathHint.OnClientEvent)[1].Function,
+                 1,
+                 {
+                     "You died to the Eyes...",
+                     "They don't like to be stared at.",
+                 }
+             )
+         end
+     end
+ end
+ task.wait(0.2)
+end
+end
+end
+})
 ExtraTab:AddButton({
     Name = "the best script for the game DOORS is not advertising!",
     Callback = function ()
@@ -4700,8 +5105,8 @@ local UpdateTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-UpdateTab:AddParagraph("10.11.2022","Some changes, FINNALY! Timer Entity Tab RETURNED, New Tab Update Log.")
+UpdateTab:AddParagraph("14.11.2022","Some changes, New! Added Keybinds Tab, New entity Null from plamen6789, New! Next Room Action! in Extra Tab, Added notification if you are in the lobby")
 
-UpdateTab:AddParagraph("Soon...","this script will change the library from OrionLib to RayField (because it is outdated)")
+UpdateTab:AddParagraph("Soon...","this script will change the library from OrionLib to RayField (because it is outdated), within a week I will remake this script!!")
 
 OrionLib:Init()
