@@ -1,5 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/source%20(OrionLib)')))()
 local Window = OrionLib:MakeWindow({Name = "Doors Script", HidePremium = false, SaveConfig = true, ConfigFolder = "Doors Summon"})
+local TargetWalkspeed = 0
 
 if game.PlaceId == 6516141723 then
     OrionLib:MakeNotification({
@@ -3786,6 +3787,8 @@ everyTab:AddButton({
     end
 })
 
+
+
 local Tab = Window:MakeTab({
     Name = "Summon Entity",
     Icon = "rbxassetid://11372950109",
@@ -4290,21 +4293,21 @@ PlayerTab:AddButton({
     end
 })
 
-local WalkSpeed = 0
 PlayerTab:AddSlider({
-	Name = "WalkSpeed",
-	Min = 0,
-	Max = 200,
-	Default = 16,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "",
-	Callback = function(Value)
-		WalkSpeed = Value
-
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-	end    
+    Name = "WalkSpeed",
+    Min = 0, 
+    Max = 200,
+    Increment = 1,
+    Default = 16,
+    Color = Color3.fromRGB(255,255,255),
+    CurrentValue = 5,
+    ValueName = "",
+    Callback = function(Value)
+        TargetWalkspeed = Value
+    end
 })
+
+
 
 local pcl = Instance.new("SpotLight")
 pcl.Brightness = 1
@@ -5105,7 +5108,7 @@ local UpdateTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-UpdateTab:AddParagraph("14.11.2022","Some changes, New! Added Keybinds Tab, New entity Null from plamen6789, New! Next Room Action! in Extra Tab, Added notification if you are in the lobby")
+UpdateTab:AddParagraph("14.11.2022","Some changes, New! Added Keybinds Tab, New entity Null from plamen6789, New! Next Room Action! in Extra Tab, Added notification if you are in the lobby, fixed walkspeed!!!")
 
 UpdateTab:AddParagraph("Soon...","this script will change the library from OrionLib to RayField (because it is outdated), within a week I will remake this script!!")
 
