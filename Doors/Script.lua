@@ -5112,7 +5112,7 @@ UpdateTab:AddParagraph("14.11.2022","Some changes, New! Added Keybinds Tab, New 
 
 UpdateTab:AddParagraph("New!","My script is being converted to Rayfiled UI. If you want, you can see what I get while the script is in alpha version.")
 			
-UpdateTba:AddButton({
+UpdateTab:AddButton({
     Name = "Test New UI",
     Callback = function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/Script%20(Rayfield).lua"))()
