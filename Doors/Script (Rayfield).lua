@@ -40,6 +40,8 @@ local ExtraTab = Window:CreateTab("Extra", 7734042071)
 local CreditsTab = Window:CreateTab("Credits", 4483345998)
 local UpdateTab = Window:CreateTab("Update Log", 4483345998)
 
+CreditsTab:CreateParagraph({Title = "Credits to", Content = "plamen6789 to custom entites model!!. Dreadmania to every door script, Break Light, Flicker Light, Loop Script. screech#6908 to crucifix script, to skeleton key script, to the best script for the game DOORS!. MuhammadGames#0017 to Doors Speedrun Script","My GitHub: SindubsMini - my discord: netzklap#7566"})
+
 bugTab:CreateParagraph({Title = "Bugs", Content = "Not working Book Chams, Keybinds at the moment, WalkSpeed, 100 HP, Spawn Timothy, Skeleton Key, Seek Eyes"})
 bugTab:CreateParagraph({Title = "Reminder", Content = "This script is still in alpha version, do not be surprised that there are a lot of bugs"})
 
