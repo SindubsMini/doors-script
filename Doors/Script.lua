@@ -5080,7 +5080,7 @@ end
 end
 })
 ExtraTab:AddButton({
-    Name = "the best script for the game DOORS is not advertising!",
+    Name = "",
     Callback = function ()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Johnny39871/assets/main/DoorsHubSpawner'))()
     end
@@ -5110,6 +5110,11 @@ local UpdateTab = Window:MakeTab({
 
 UpdateTab:AddParagraph("14.11.2022","Some changes, New! Added Keybinds Tab, New entity Null from plamen6789, New! Next Room Action! in Extra Tab, Added notification if you are in the lobby, fixed walkspeed!!!")
 
-UpdateTab:AddParagraph("Soon...","this script will change the library from OrionLib to RayField (because it is outdated), within a week I will remake this script!!")
-
+UpdateTab:AddParagraph("New!","My script is being converted to Rayfiled UI. If you want, you can see what I get while the script is in alpha version.")
+			
+UpdateTba:AddButton({
+    Name = "Test New UI",
+    Callback = function ()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/Script%20(Rayfield).lua"))()
+	end
 OrionLib:Init()
