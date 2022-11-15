@@ -5117,4 +5117,5 @@ UpdateTab:AddButton({
     Callback = function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/Script%20(Rayfield).lua"))()
 	end
+})
 OrionLib:Init()
