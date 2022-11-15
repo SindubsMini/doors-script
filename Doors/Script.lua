@@ -4275,6 +4275,12 @@ itemsTab:AddButton({
     end
 })
 
+itemsTab:AddButton({
+    Name = "Give Gun",
+    Callback = function ()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ZepsyyCodesLUA/Utilities/main/DOORSFpsGun.lua?token=GHSAT0AAAAAAB2POHILOXMAHBQ2GN2QD2MQY3SXTCQ"))()
+    end
+})
 
 local PlayerTab = Window:MakeTab({
     Name = "Player",
@@ -5080,7 +5086,7 @@ end
 end
 })
 ExtraTab:AddButton({
-    Name = "",
+    Name = "the best script for the game DOORS is not advertising!",
     Callback = function ()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Johnny39871/assets/main/DoorsHubSpawner'))()
     end
@@ -5100,7 +5106,7 @@ local CreditsTab = Window:MakeTab({
 })
 
 
-CreditsTab:AddParagraph("Credits to","plamen6789 to custom entites model!!. Dreadmania to every door script, Break Light, Flicker Light, Loop Script. screech#6908 to crucifix script, to skeleton key script, to the best script for the game DOORS!. MuhammadGames#0017 to Doors Speedrun Script","My GitHub: SindubsMini - my discord: netzklap#7566")
+CreditsTab:AddParagraph("Credits to","plamen6789 to custom entites model!!. Dreadmania to every door script, Break Light, Flicker Light, Loop Script. screech#6908 to crucifix script, to skeleton key script, to the best script for the game DOORS!. MuhammadGames#0017 to Doors Speedrun Script, ","My GitHub: SindubsMini - my discord: netzklap#7566")
 
 local UpdateTab = Window:MakeTab({
     Name = "Update Log",
@@ -5108,14 +5114,8 @@ local UpdateTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-UpdateTab:AddParagraph("14.11.2022","Some changes, New! Added Keybinds Tab, New entity Null from plamen6789, New! Next Room Action! in Extra Tab, Added notification if you are in the lobby, fixed walkspeed!!!")
+UpdateTab:AddParagraph("15.11.2022","Some changes, New! Added Gun in Items Tab")
 
-UpdateTab:AddParagraph("New!","My script is being converted to Rayfiled UI. If you want, you can see what I get while the script is in alpha version.")
-			
-UpdateTab:AddButton({
-    Name = "Test New UI",
-    Callback = function ()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/Script%20(Rayfield).lua"))()
-	end
-})
+UpdateTab:AddParagraph("Soon...","this script will change the library from OrionLib to RayField (because it is outdated), within a week I will remake this script!!")
+
 OrionLib:Init()
