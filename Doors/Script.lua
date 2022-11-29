@@ -11,6 +11,11 @@ if game.PlaceId == 6516141723 then
     return
 end
 
+OrionLib:MakeNotification({
+    Name = "important",
+    Content = "thank you for using the script, please read the update logs tab",
+    Time = 15
+})
 
 local time = Window:MakeTab({
     Name = "Entity Timer",
@@ -5117,5 +5122,7 @@ local UpdateTab = Window:MakeTab({
 UpdateTab:AddParagraph("15.11.2022","Some changes, New! Added Gun in Items Tab")
 
 UpdateTab:AddParagraph("Soon...","this script will change the library from OrionLib to RayField (because it is outdated), within a week I will remake this script!!")
+
+UpdateTab:AddParagraph("sorry","I haven't updated this script for a long time, but I will continue to release it. There will be an update already tomorrow.")
 
 OrionLib:Init()
