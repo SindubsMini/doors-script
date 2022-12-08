@@ -17,6 +17,13 @@ local time = Window:MakeTab({
     PremiumOnly = false
 })
 
+OrionLib:MakeNotification({
+    Name = "Important!",
+    Content = "Please read the Info Tab",
+    Image = "rbxassetid://7733964719",
+    Time = 10
+})
+
 time:AddButton({
     Name = "Screech Every 15 Secs",
     Callback = function ()
@@ -12587,5 +12594,12 @@ InfoTab:AddParagraph("how can I be contacted","My Discord: netzklap#7566, My Rob
 InfoTab:AddParagraph("Changelog","")
 InfoTab:AddParagraph("06.12.2022","1. Some changes")
 InfoTab:AddParagraph("Bugs","1. Skeleton key doesn't exist at the moment 2. You're uncontrollably fast and its hard to get out of closets")
-InfoTab:AddParagraph("Notes","nothing")
+InfoTab:AddParagraph("Important!","this script will be removed on December 15th, as the user interface is outdated")
+InfoTab:AddButton({
+    Name = "New UI",
+    Callback = function ()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/Script.lua'))()
+    OrionLib:Destroy()
+    end
+})
 OrionLib:Init()
