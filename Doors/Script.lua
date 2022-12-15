@@ -73,13 +73,7 @@ InfoTab:CreateParagraph({Title = "Changelog", Content = ""})
 InfoTab:CreateParagraph({Title = "06.12.2022", Content = "Rayfield UI!!!"})
 InfoTab:CreateParagraph({Title = "Bugs", Content = "1. Skeleton key doesn't exist at the moment 2. You're uncontrollably fast and its hard to get out of closets, 3. Keybinds for redroom and heartbite minigame"})
 InfoTab:CreateParagraph({Title = "Notes", Content = "nothing"})
-InfoTab:CreateButton({
-    Name = "Old UI (will be deleted on December 15)",
-    Callback = function ()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/SindubsMini/doors-script/main/Doors/Script(old).lua'))()
-    Rayfield:Destroy()
-    end
-})
+
 timerTab:CreateButton({
     Name = "Screech Every 15 Secs",
     Callback = function ()
