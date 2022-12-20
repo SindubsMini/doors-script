@@ -68,7 +68,7 @@ local GameTab = Window:CreateTab("Game", 4483345998)
 local ExtraTab = Window:CreateTab("Extra", 7734042071)
 local InfoTab = Window:CreateTab("Info", 4483345998)
 
-InfoTab:CreateParagraph({Title = "how can I be contacted", Content = "My Discord: netzklap#7566, My Roblox Account: codes0008"})
+InfoTab:CreateParagraph({Title = "how can I be contacted", Content = "My Discord: netzklap#7566"})
 InfoTab:CreateParagraph({Title = "Changelog", Content = ""})
 InfoTab:CreateParagraph({Title = "06.12.2022", Content = "Rayfield UI!!!"})
 InfoTab:CreateParagraph({Title = "Bugs", Content = "1. Skeleton key doesn't exist at the moment 2. You're uncontrollably fast and its hard to get out of closets, 3. Keybinds for redroom and heartbite minigame"})
