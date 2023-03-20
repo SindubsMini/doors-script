@@ -1,4 +1,4 @@
-# Doors Script
+# Doors Script [EOL]
 New screenshot
 
 ![alt text](https://github.com/SindubsMini/doors-script/blob/main/preview.png)
